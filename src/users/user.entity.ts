@@ -1,6 +1,5 @@
-import { Expose } from "class-transformer";
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import * as bcrypt from "bcrypt";
+import { Expose } from 'class-transformer';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 class User {
@@ -9,7 +8,7 @@ class User {
   public id?: number;
 
   @Column({
-    unique: true
+    unique: true,
   })
   @Expose()
   public email: string;
