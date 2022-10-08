@@ -6,7 +6,7 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
-import Chant from '../chant/chant.entity';
+import Chant from './chant.entity';
 
 @Entity()
 class Auteur {

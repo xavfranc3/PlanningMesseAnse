@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ChantModule } from './chant/chant.module';
 import * as Joi from 'joi';
+import { AuteursModule } from './auteurs/auteurs.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import * as Joi from 'joi';
     UsersModule,
     AuthenticationModule,
     ChantModule,
+    AuteursModule,
   ],
   controllers: [],
   providers: [],

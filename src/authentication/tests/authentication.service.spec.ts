@@ -1,14 +1,14 @@
-import { AuthenticationService } from "../authentication.service";
-import { Test } from "@nestjs/testing";
-import { ConfigService } from "@nestjs/config";
-import { JwtService } from "@nestjs/jwt";
-import { getRepositoryToken } from "@nestjs/typeorm";
-import User from "../../users/user.entity";
-import { UsersService } from "../../users/users.service";
-import mockedConfigService from "../../utils/mocks/config.service";
-import mockedJwtService from "../../utils/mocks/jwt.service";
+import { AuthenticationService } from '../authentication.service';
+import { Test } from '@nestjs/testing';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import User from '../../entity/user.entity';
+import { UsersService } from '../../users/users.service';
+import mockedConfigService from '../../utils/mocks/config.service';
+import mockedJwtService from '../../utils/mocks/jwt.service';
 
-describe("The AuthenticationService", function() {
+describe('The AuthenticationService', function () {
   let authenticationService: AuthenticationService;
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -17,28 +17,27 @@ describe("The AuthenticationService", function() {
         AuthenticationService,
         {
           provide: ConfigService,
-          useValue: mockedConfigService
+          useValue: mockedConfigService,
         },
         {
           provide: JwtService,
-          useValue: mockedJwtService
+          useValue: mockedJwtService,
         },
         {
           provide: getRepositoryToken(User),
-          useValue: {}
-        }
-      ]
-    })
-      .compile();
+          useValue: {},
+        },
+      ],
+    }).compile();
     authenticationService = await module.get(AuthenticationService);
   });
 
-  describe("when creating a cookie", () => {
-    it("should return a string", () => {
+  describe('when creating a cookie', () => {
+    it('should return a string', () => {
       const userId = 1;
       expect(
-        typeof authenticationService.getCookieWithJwtToken(userId)
-      ).toEqual("string");
+        typeof authenticationService.getCookieWithJwtToken(userId),
+      ).toEqual('string');
     });
   });
 });

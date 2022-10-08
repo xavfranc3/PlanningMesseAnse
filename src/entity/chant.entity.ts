@@ -1,6 +1,6 @@
 import { Expose } from 'class-transformer';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
-import Auteur from '../entity/auteur.entity';
+import Auteur from './auteur.entity';
 
 @Entity()
 class Chant {
@@ -12,7 +12,8 @@ class Chant {
   @Expose()
   nom: string;
 
-  @ManyToMany(() => Auteur, (auteur: Auteur) => auteur.chants)
+  @ManyToMany(() => Auteur, (auteur: Auteur) => auteur.chants, { eager: true })
+  @Expose()
   public auteurs: Auteur[];
 }
 
