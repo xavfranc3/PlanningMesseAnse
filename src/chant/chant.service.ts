@@ -1,14 +1,16 @@
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import Chant from './chant.entity';
+import Chant from '../entity/chant.entity';
 import CreateChantDto from './dto/createChant.dto';
+import { AuteursService } from '../auteurs/auteurs.service';
 
 @Injectable()
 export class ChantService {
   constructor(
     @InjectRepository(Chant)
     private chantRepository: Repository<Chant>,
+    private auteursService: AuteursService,
   ) {}
 
   getAllChant() {
@@ -16,9 +18,10 @@ export class ChantService {
   }
 
   async addChant(chantData: CreateChantDto) {
-    const newChant = await this.chantRepository.create(chantData);
+    const newChant = new Chant();
+    newChant.nom = chantData.nom;
+    newChant.auteurs = chantData.auteurs;
     await this.chantRepository.save(newChant);
-    return newChant;
   }
 
   async getChantByName(nom: string) {

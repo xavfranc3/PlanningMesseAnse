@@ -1,9 +1,9 @@
 import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
-import UserEntity from './src/users/user.entity';
+import UserEntity from './src/entity/user.entity';
 import { CreateUser1665002763085 } from './migrations/1665002763085-CreateUser';
-import ChantEntity from './src/chant/chant.entity';
+import ChantEntity from './src/entity/chant.entity';
 import { CreateChant1665089004269 } from './migrations/1665089004269-CreateChant';
 import AuteurEntity from './src/entity/auteur.entity';
 import { CreateAuteur1665238617896 } from './migrations/1665238617896-CreateAuteur';
