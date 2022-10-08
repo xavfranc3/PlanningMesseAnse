@@ -5,6 +5,9 @@ import UserEntity from './src/users/user.entity';
 import { CreateUser1665002763085 } from './migrations/1665002763085-CreateUser';
 import ChantEntity from './src/chant/chant.entity';
 import { CreateChant1665089004269 } from './migrations/1665089004269-CreateChant';
+import AuteurEntity from './src/entity/auteur.entity';
+import { CreateAuteur1665238617896 } from './migrations/1665238617896-CreateAuteur';
+import { AddChantsToAuteurs1665239479379 } from './migrations/1665239479379-AddChantsToAuteurs';
 
 config();
 
@@ -17,6 +20,11 @@ export default new DataSource({
   username: configService.get('POSTGRES_USER'),
   password: configService.get('POSTGRES_PASSWORD'),
   database: configService.get('POSTGRES_DB'),
-  entities: [UserEntity, ChantEntity],
-  migrations: [CreateUser1665002763085, CreateChant1665089004269],
+  entities: [UserEntity, ChantEntity, AuteurEntity],
+  migrations: [
+    CreateUser1665002763085,
+    CreateChant1665089004269,
+    CreateAuteur1665238617896,
+    AddChantsToAuteurs1665239479379,
+  ],
 });
